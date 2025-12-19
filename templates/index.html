@@ -4,11 +4,16 @@
     <title>Welcome</title>
 </head>
 <body>
+    {% if name == "unknown" %}
     <h1>Hello!</h1>
     <form action="/" method="POST">
         <label for="name">Email:</label>
         <input type="text" id="name" name="name" required>
         <button type="submit">submit</butoon>
     </form>
+    {% else %}
+    <h1>Hello! {{name}}</h1>
+        <p>Your name has {{ vowels }}</p>
+    {% endif %}
 </body>
 </html>
