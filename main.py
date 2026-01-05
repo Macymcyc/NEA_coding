@@ -1,10 +1,19 @@
 from flask import Flask, request, render_template
+from db import SessionLocal, engine
+from models import Base
 
 app = Flask(__name__)
+
+#Create tables in the database if they don't exist yet
+Base.metadata.create_all(bind=engine)
 
 @app.route("/", methods=["GET","POST"])
 
 def index():
+    session = SessionLocal
+    #add session to query users or add users
+    session.close()
+
     vowels=None
     name = request.form.get("name","unknown")
     if name != "unknown":
